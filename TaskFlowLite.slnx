@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TaskFlowLite.Api/TaskFlowLite.Api.csproj" />
+    <Project Path="src/TaskFlowLite.Application/TaskFlowLite.Application.csproj" />
+    <Project Path="src/TaskFlowLite.Domain/TaskFlowLite.Domain.csproj" />
+    <Project Path="src/TaskFlowLite.Infrastructure/TaskFlowLite.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TaskFlowLite.IntegrationTests/TaskFlowLite.IntegrationTests.csproj" />
+    <Project Path="tests/TaskFlowLite.UnitTests/TaskFlowLite.UnitTests.csproj" />
+  </Folder>
+</Solution>

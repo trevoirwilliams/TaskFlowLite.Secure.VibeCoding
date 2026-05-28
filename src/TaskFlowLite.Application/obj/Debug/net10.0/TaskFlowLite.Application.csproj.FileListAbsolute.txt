@@ -1,0 +1,15 @@
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\bin\Debug\net10.0\TaskFlowLite.Application.deps.json
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\bin\Debug\net10.0\TaskFlowLite.Application.dll
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\bin\Debug\net10.0\TaskFlowLite.Application.pdb
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\bin\Debug\net10.0\TaskFlowLite.Domain.dll
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\bin\Debug\net10.0\TaskFlowLite.Domain.pdb
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.csproj.AssemblyReference.cache
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.AssemblyInfoInputs.cache
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.AssemblyInfo.cs
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.csproj.CoreCompileInputs.cache
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlow.3476A886.Up2Date
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.dll
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\refint\TaskFlowLite.Application.dll
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\TaskFlowLite.Application.pdb
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Application\obj\Debug\net10.0\ref\TaskFlowLite.Application.dll
