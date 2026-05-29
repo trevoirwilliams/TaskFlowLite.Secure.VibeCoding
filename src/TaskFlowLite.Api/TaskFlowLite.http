@@ -1,0 +1,121 @@
+@baseUrl = http://localhost:5199
+@userHeader = X-TaskFlow-UserId
+
+# Seeded users from DbSeeder:
+@user1 = 1
+@user2 = 2
+@user3 = 3
+@invalidUser = not-a-number
+
+# Seeded work requests from DbSeeder:
+@request1 = 1
+@request2 = 2
+@missingRequest = 9999
+
+###
+# Health check by metadata
+GET {{baseUrl}}/api/metadata/priorities
+
+###
+GET {{baseUrl}}/api/metadata/statuses
+
+###
+# Active users
+GET {{baseUrl}}/api/users
+
+###
+# Work requests list (no filters)
+GET {{baseUrl}}/api/workrequests
+
+###
+# Work requests list (example filters)
+GET {{baseUrl}}/api/workrequests?status=InProgress&priority=Medium&assignedToUserId={{user3}}
+
+###
+# Get request details as requester (expected: 200)
+GET {{baseUrl}}/api/workrequests/{{request1}}
+{{userHeader}}: {{user1}}
+
+###
+# Get request details as assignee (expected: 200)
+GET {{baseUrl}}/api/workrequests/{{request2}}
+{{userHeader}}: {{user3}}
+
+###
+# Get request details as unrelated user (expected: safe 404)
+GET {{baseUrl}}/api/workrequests/{{request2}}
+{{userHeader}}: {{user1}}
+
+###
+# Get missing request (expected: safe 404)
+GET {{baseUrl}}/api/workrequests/{{missingRequest}}
+{{userHeader}}: {{user1}}
+
+###
+# Get request details with missing current-user header (expected: safe 404)
+GET {{baseUrl}}/api/workrequests/{{request1}}
+
+###
+# Get request details with invalid current-user header (expected: safe 404)
+GET {{baseUrl}}/api/workrequests/{{request1}}
+{{userHeader}}: {{invalidUser}}
+
+###
+# Create work request as user2 (expected: 201)
+POST {{baseUrl}}/api/workrequests
+Content-Type: application/json
+{{userHeader}}: {{user2}}
+
+{
+  "title": "Investigate failed nightly sync",
+  "description": "Review logs and identify the root cause for nightly sync failures.",
+  "priority": "High",
+  "assignedToUserId": {{user3}}
+}
+
+###
+# Update work request details (expected: 200 if request exists)
+PUT {{baseUrl}}/api/workrequests/{{request1}}
+Content-Type: application/json
+{{userHeader}}: {{user1}}
+
+{
+  "title": "Rotate internal API keys - follow up",
+  "description": "Include rollback checklist and communication plan.",
+  "priority": "High"
+}
+
+###
+# Assign work request (expected: 200 if request exists)
+PATCH {{baseUrl}}/api/workrequests/{{request1}}/assign
+Content-Type: application/json
+{{userHeader}}: {{user1}}
+
+{
+  "assignedToUserId": {{user2}}
+}
+
+###
+# Update status (expected: 200 or validation error for invalid transition)
+PATCH {{baseUrl}}/api/workrequests/{{request1}}/status
+Content-Type: application/json
+{{userHeader}}: {{user1}}
+
+{
+  "status": "InProgress"
+}
+
+###
+# Get request notes
+GET {{baseUrl}}/api/workrequests/{{request1}}/notes
+{{userHeader}}: {{user1}}
+
+###
+# Add request note
+POST {{baseUrl}}/api/workrequests/{{request1}}/notes
+Content-Type: application/json
+{{userHeader}}: {{user1}}
+
+{
+  "body": "Security checkpoint review completed; proceeding with remediation verification."
+}
