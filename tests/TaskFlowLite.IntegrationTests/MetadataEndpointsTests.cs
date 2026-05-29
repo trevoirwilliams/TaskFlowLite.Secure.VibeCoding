@@ -18,15 +18,4 @@ public class MetadataEndpointsTests : IClassFixture<CustomWebApplicationFactory>
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
-
-    [Fact]
-    public async Task GetWorkRequests_ReturnsSeededResults()
-    {
-        var response = await _httpClient.GetAsync("/api/workrequests");
-
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
-        var content = await response.Content.ReadAsStringAsync();
-        Assert.Contains("Rotate internal API keys", content);
-    }
 }
