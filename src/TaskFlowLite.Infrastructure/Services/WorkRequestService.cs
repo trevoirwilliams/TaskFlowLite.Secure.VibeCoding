@@ -50,9 +50,15 @@ public class WorkRequestService : IWorkRequestService
 
     public async Task<WorkRequestDto?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
+        if (!_currentUserContext.TryGetUserId(out var currentUserId))
+        {
+            return null;
+        }
+
         return await _dbContext.WorkRequests
             .AsNoTracking()
-            .Where(x => x.Id == id)
+            .Where(x => x.Id == id
+                && (x.RequestedByUserId == currentUserId || x.AssignedToUserId == currentUserId))
             .Select(ToDto())
             .FirstOrDefaultAsync(cancellationToken);
     }
