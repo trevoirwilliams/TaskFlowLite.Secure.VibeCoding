@@ -25,7 +25,14 @@ public class WorkRequestService : IWorkRequestService
         int? assignedToUserId,
         CancellationToken cancellationToken)
     {
-        IQueryable<WorkRequest> query = _dbContext.WorkRequests.AsNoTracking();
+        if (!_currentUserContext.TryGetUserId(out var currentUserId))
+        {
+            return [];
+        }
+
+        IQueryable<WorkRequest> query = _dbContext.WorkRequests
+            .AsNoTracking()
+            .Where(x => x.RequestedByUserId == currentUserId || x.AssignedToUserId == currentUserId);
 
         if (status.HasValue)
         {
