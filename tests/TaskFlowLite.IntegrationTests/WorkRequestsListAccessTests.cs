@@ -83,6 +83,56 @@ public class WorkRequestsListAccessTests : IClassFixture<CustomWebApplicationFac
         Assert.Empty(ReadIds(body));
     }
 
+    [Fact]
+    public async Task GetWorkRequests_WithSearchByTitle_ReturnsMatchingVisibleRequests()
+    {
+        var response = await SendListRequestAsync(userIdHeader: "1", queryString: "?search=password");
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        var body = await response.Content.ReadAsStringAsync();
+        var ids = ReadIds(body);
+
+        Assert.Equal(new[] { 1 }, ids);
+    }
+
+    [Fact]
+    public async Task GetWorkRequests_WithSearchByDescription_ReturnsMatchingVisibleRequests()
+    {
+        var response = await SendListRequestAsync(userIdHeader: "3", queryString: "?search=oauth");
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        var body = await response.Content.ReadAsStringAsync();
+        var ids = ReadIds(body);
+
+        Assert.Equal(new[] { 2 }, ids);
+    }
+
+    [Fact]
+    public async Task GetWorkRequests_WithWhitespaceSearch_TreatsAsNoSearch()
+    {
+        var baselineResponse = await SendListRequestAsync(userIdHeader: "1");
+        var whitespaceResponse = await SendListRequestAsync(userIdHeader: "1", queryString: "?search=%20%20%20");
+
+        Assert.Equal(HttpStatusCode.OK, baselineResponse.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, whitespaceResponse.StatusCode);
+
+        var baselineBody = await baselineResponse.Content.ReadAsStringAsync();
+        var whitespaceBody = await whitespaceResponse.Content.ReadAsStringAsync();
+
+        Assert.Equal(ReadIds(baselineBody), ReadIds(whitespaceBody));
+    }
+
+    [Fact]
+    public async Task GetWorkRequests_WithSearchOverMaxLength_ReturnsBadRequest()
+    {
+        var oversizedSearch = new string('a', 101);
+        var response = await SendListRequestAsync(userIdHeader: "1", queryString: $"?search={oversizedSearch}");
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
     private async Task<HttpResponseMessage> SendListRequestAsync(string? userIdHeader, string queryString = "")
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, $"/api/workrequests{queryString}");

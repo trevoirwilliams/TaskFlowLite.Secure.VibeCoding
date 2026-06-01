@@ -9,6 +9,7 @@ public interface IWorkRequestService
         WorkRequestStatus? status,
         Priority? priority,
         int? assignedToUserId,
+        string? search,
         CancellationToken cancellationToken);
 
     Task<WorkRequestDto?> GetByIdAsync(int id, CancellationToken cancellationToken);

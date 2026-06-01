@@ -9,15 +9,30 @@ namespace TaskFlowLite.Api.Controllers;
 [Route("api/workrequests")]
 public class WorkRequestsController : ControllerBase
 {
+    private const int MaxSearchLength = 100;
+
     [HttpGet]
     public async Task<IActionResult> Get(
         [FromServices] IWorkRequestService service,
         [FromQuery] WorkRequestStatus? status,
         [FromQuery] Priority? priority,
         [FromQuery] int? assignedToUserId,
+        [FromQuery] string? search,
         CancellationToken cancellationToken)
     {
-        var items = await service.GetAsync(status, priority, assignedToUserId, cancellationToken);
+        var normalizedSearch = search?.Trim();
+        if (string.IsNullOrWhiteSpace(normalizedSearch))
+        {
+            normalizedSearch = null;
+        }
+
+        if (normalizedSearch is not null && normalizedSearch.Length > MaxSearchLength)
+        {
+            ModelState.AddModelError(nameof(search), $"The search query cannot exceed {MaxSearchLength} characters.");
+            return ValidationProblem(ModelState);
+        }
+
+        var items = await service.GetAsync(status, priority, assignedToUserId, normalizedSearch, cancellationToken);
         return Ok(items);
     }
 

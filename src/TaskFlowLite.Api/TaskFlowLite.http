@@ -32,6 +32,31 @@ GET {{baseUrl}}/api/workrequests
 GET {{baseUrl}}/api/workrequests?status=InProgress&priority=Medium&assignedToUserId={{user3}}
 
 ###
+# Work requests list (search by title as requester, expected: includes request1)
+GET {{baseUrl}}/api/workrequests?search=password
+{{userHeader}}: {{user1}}
+
+###
+# Work requests list (search by description as assignee, expected: includes request2)
+GET {{baseUrl}}/api/workrequests?search=oauth
+{{userHeader}}: {{user3}}
+
+###
+# Work requests list (search + narrowing filters, expected: narrowed visible results only)
+GET {{baseUrl}}/api/workrequests?status=InProgress&assignedToUserId={{user3}}&search=oauth
+{{userHeader}}: {{user3}}
+
+###
+# Work requests list (whitespace-only search, expected: same as no search)
+GET {{baseUrl}}/api/workrequests?search=Complete 
+{{userHeader}}: {{user1}}
+
+###
+# Work requests list (oversized search > 100 chars, expected: 400 validation problem)
+GET {{baseUrl}}/api/workrequests?search=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+{{userHeader}}: {{user1}}
+
+###
 # Get request details as requester (expected: 200)
 GET {{baseUrl}}/api/workrequests/{{request1}}
 {{userHeader}}: {{user1}}

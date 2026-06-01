@@ -23,6 +23,7 @@ public class WorkRequestService : IWorkRequestService
         WorkRequestStatus? status,
         Priority? priority,
         int? assignedToUserId,
+        string? search,
         CancellationToken cancellationToken)
     {
         if (!_currentUserContext.TryGetUserId(out var currentUserId))
@@ -47,6 +48,11 @@ public class WorkRequestService : IWorkRequestService
         if (assignedToUserId.HasValue)
         {
             query = query.Where(x => x.AssignedToUserId == assignedToUserId.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            query = query.Where(x => x.Title.Contains(search) || x.Description.Contains(search));
         }
 
         return await query
