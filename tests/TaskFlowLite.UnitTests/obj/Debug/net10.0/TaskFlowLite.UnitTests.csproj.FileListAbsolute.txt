@@ -100,3 +100,4 @@ C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamental
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.UnitTests\obj\Debug\net10.0\TaskFlowLite.UnitTests.pdb
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.UnitTests\obj\Debug\net10.0\TaskFlowLite.UnitTests.genruntimeconfig.cache
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.UnitTests\obj\Debug\net10.0\ref\TaskFlowLite.UnitTests.dll
+c:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.UnitTests\obj\Debug\net10.0\TaskFlowLite.UnitTests.sourcelink.json

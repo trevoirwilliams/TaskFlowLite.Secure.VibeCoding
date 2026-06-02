@@ -86,7 +86,7 @@ public class WorkRequestsListAccessTests : IClassFixture<CustomWebApplicationFac
     [Fact]
     public async Task GetWorkRequests_WithSearchByTitle_ReturnsMatchingVisibleRequests()
     {
-        var response = await SendListRequestAsync(userIdHeader: "1", queryString: "?search=password");
+        var response = await SendListRequestAsync(userIdHeader: "1", queryString: "?search=Rotate");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -99,7 +99,7 @@ public class WorkRequestsListAccessTests : IClassFixture<CustomWebApplicationFac
     [Fact]
     public async Task GetWorkRequests_WithSearchByDescription_ReturnsMatchingVisibleRequests()
     {
-        var response = await SendListRequestAsync(userIdHeader: "3", queryString: "?search=oauth");
+        var response = await SendListRequestAsync(userIdHeader: "3", queryString: "?search=security");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 

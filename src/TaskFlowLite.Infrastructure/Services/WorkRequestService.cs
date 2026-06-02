@@ -20,10 +20,7 @@ public class WorkRequestService : IWorkRequestService
     }
 
     public async Task<IReadOnlyList<WorkRequestDto>> GetAsync(
-        WorkRequestStatus? status,
-        Priority? priority,
-        int? assignedToUserId,
-        string? search,
+        WorkRequestListQuery query,
         CancellationToken cancellationToken)
     {
         if (!_currentUserContext.TryGetUserId(out var currentUserId))
@@ -31,31 +28,32 @@ public class WorkRequestService : IWorkRequestService
             return [];
         }
 
-        IQueryable<WorkRequest> query = _dbContext.WorkRequests
+        IQueryable<WorkRequest> scopedQuery = _dbContext.WorkRequests
             .AsNoTracking()
             .Where(x => x.RequestedByUserId == currentUserId || x.AssignedToUserId == currentUserId);
 
-        if (status.HasValue)
+        if (query.Status.HasValue)
         {
-            query = query.Where(x => x.Status == status.Value);
+            scopedQuery = scopedQuery.Where(x => x.Status == query.Status.Value);
         }
 
-        if (priority.HasValue)
+        if (query.Priority.HasValue)
         {
-            query = query.Where(x => x.Priority == priority.Value);
+            scopedQuery = scopedQuery.Where(x => x.Priority == query.Priority.Value);
         }
 
-        if (assignedToUserId.HasValue)
+        if (query.AssignedToUserId.HasValue)
         {
-            query = query.Where(x => x.AssignedToUserId == assignedToUserId.Value);
+            scopedQuery = scopedQuery.Where(x => x.AssignedToUserId == query.AssignedToUserId.Value);
         }
 
-        if (!string.IsNullOrWhiteSpace(search))
+        var normalizedSearch = query.NormalizedSearch;
+        if (!string.IsNullOrWhiteSpace(normalizedSearch))
         {
-            query = query.Where(x => x.Title.Contains(search) || x.Description.Contains(search));
+            scopedQuery = scopedQuery.Where(x => x.Title.Contains(normalizedSearch) || x.Description.Contains(normalizedSearch));
         }
 
-        return await query
+        return await scopedQuery
             .OrderByDescending(x => x.CreatedAtUtc)
             .Select(ToDto())
             .ToListAsync(cancellationToken);

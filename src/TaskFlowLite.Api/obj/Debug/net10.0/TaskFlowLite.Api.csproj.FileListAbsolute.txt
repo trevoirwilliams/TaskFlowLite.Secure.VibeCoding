@@ -197,6 +197,7 @@ C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamental
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\TaskFlowLite.Api.csproj.CoreCompileInputs.cache
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\TaskFlowLite.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\TaskFlowLite.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\TaskFlowLite.Api.sourcelink.json
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\src\TaskFlowLite.Api\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json

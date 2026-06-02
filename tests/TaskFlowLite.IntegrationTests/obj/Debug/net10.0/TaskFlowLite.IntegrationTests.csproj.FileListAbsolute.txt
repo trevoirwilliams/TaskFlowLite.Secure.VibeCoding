@@ -504,3 +504,4 @@ C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamental
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.IntegrationTests\obj\Debug\net10.0\TaskFlowLite.IntegrationTests.pdb
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.IntegrationTests\obj\Debug\net10.0\TaskFlowLite.IntegrationTests.genruntimeconfig.cache
 C:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.IntegrationTests\obj\Debug\net10.0\ref\TaskFlowLite.IntegrationTests.dll
+c:\Users\brani\OneDrive\Courses\Vibe Coding - Secure App Development Fundamentals\demo\tests\TaskFlowLite.IntegrationTests\obj\Debug\net10.0\TaskFlowLite.IntegrationTests.sourcelink.json
