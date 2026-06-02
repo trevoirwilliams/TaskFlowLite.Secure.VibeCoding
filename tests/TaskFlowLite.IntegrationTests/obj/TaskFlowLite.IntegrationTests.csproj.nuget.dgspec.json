@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj": {}
+    "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj": {
+    "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj",
+        "projectUniqueName": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj",
         "projectName": "TaskFlowLite.Api",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\obj\\",
+        "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj",
+        "packagesPath": "C:\\Users\\brani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -31,13 +31,14 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj"
               },
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj"
               }
             }
           }
@@ -52,10 +53,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
@@ -92,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -510,20 +512,20 @@
         }
       }
     },
-    "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj": {
+    "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj",
+        "projectUniqueName": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj",
         "projectName": "TaskFlowLite.Application",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\obj\\",
+        "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj",
+        "packagesPath": "C:\\Users\\brani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -537,10 +539,11 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj"
               }
             }
           }
@@ -555,10 +558,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -576,7 +580,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -854,20 +858,20 @@
         }
       }
     },
-    "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj": {
+    "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj",
         "projectName": "TaskFlowLite.Domain",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\obj\\",
+        "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj",
+        "packagesPath": "C:\\Users\\brani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -881,6 +885,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -895,10 +900,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -916,7 +922,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1194,20 +1200,20 @@
         }
       }
     },
-    "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj": {
+    "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj",
         "projectName": "TaskFlowLite.Infrastructure",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\brani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -1221,13 +1227,14 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Application\\TaskFlowLite.Application.csproj"
               },
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Domain\\TaskFlowLite.Domain.csproj"
               }
             }
           }
@@ -1242,10 +1249,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
@@ -1276,7 +1284,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -1694,20 +1702,20 @@
         }
       }
     },
-    "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj": {
+    "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj",
+        "projectUniqueName": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj",
         "projectName": "TaskFlowLite.IntegrationTests",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\obj\\",
+        "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\TaskFlowLite.IntegrationTests.csproj",
+        "packagesPath": "C:\\Users\\brani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\tests\\TaskFlowLite.IntegrationTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -1721,13 +1729,14 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Api\\TaskFlowLite.Api.csproj"
               },
-              "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\user\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj"
+              "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\brani\\OneDrive\\Courses\\Vibe Coding - Secure App Development Fundamentals\\demo\\src\\TaskFlowLite.Infrastructure\\TaskFlowLite.Infrastructure.csproj"
               }
             }
           }
@@ -1742,10 +1751,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.Mvc.Testing": {
@@ -1789,7 +1799,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

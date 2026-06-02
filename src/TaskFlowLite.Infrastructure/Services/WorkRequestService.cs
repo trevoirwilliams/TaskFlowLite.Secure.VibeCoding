@@ -20,29 +20,40 @@ public class WorkRequestService : IWorkRequestService
     }
 
     public async Task<IReadOnlyList<WorkRequestDto>> GetAsync(
-        WorkRequestStatus? status,
-        Priority? priority,
-        int? assignedToUserId,
+        WorkRequestListQuery query,
         CancellationToken cancellationToken)
     {
-        IQueryable<WorkRequest> query = _dbContext.WorkRequests.AsNoTracking();
-
-        if (status.HasValue)
+        if (!_currentUserContext.TryGetUserId(out var currentUserId))
         {
-            query = query.Where(x => x.Status == status.Value);
+            return [];
         }
 
-        if (priority.HasValue)
+        IQueryable<WorkRequest> scopedQuery = _dbContext.WorkRequests
+            .AsNoTracking()
+            .Where(x => x.RequestedByUserId == currentUserId || x.AssignedToUserId == currentUserId);
+
+        if (query.Status.HasValue)
         {
-            query = query.Where(x => x.Priority == priority.Value);
+            scopedQuery = scopedQuery.Where(x => x.Status == query.Status.Value);
         }
 
-        if (assignedToUserId.HasValue)
+        if (query.Priority.HasValue)
         {
-            query = query.Where(x => x.AssignedToUserId == assignedToUserId.Value);
+            scopedQuery = scopedQuery.Where(x => x.Priority == query.Priority.Value);
         }
 
-        return await query
+        if (query.AssignedToUserId.HasValue)
+        {
+            scopedQuery = scopedQuery.Where(x => x.AssignedToUserId == query.AssignedToUserId.Value);
+        }
+
+        var normalizedSearch = query.NormalizedSearch;
+        if (!string.IsNullOrWhiteSpace(normalizedSearch))
+        {
+            scopedQuery = scopedQuery.Where(x => x.Title.Contains(normalizedSearch) || x.Description.Contains(normalizedSearch));
+        }
+
+        return await scopedQuery
             .OrderByDescending(x => x.CreatedAtUtc)
             .Select(ToDto())
             .ToListAsync(cancellationToken);

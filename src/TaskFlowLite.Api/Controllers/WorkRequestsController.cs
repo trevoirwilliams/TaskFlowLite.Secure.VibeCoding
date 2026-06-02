@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskFlowLite.Application.Abstractions;
 using TaskFlowLite.Application.Models.WorkRequests;
-using TaskFlowLite.Domain.Enums;
 
 namespace TaskFlowLite.Api.Controllers;
 
@@ -12,12 +11,10 @@ public class WorkRequestsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get(
         [FromServices] IWorkRequestService service,
-        [FromQuery] WorkRequestStatus? status,
-        [FromQuery] Priority? priority,
-        [FromQuery] int? assignedToUserId,
+        [FromQuery] WorkRequestListQuery query,
         CancellationToken cancellationToken)
     {
-        var items = await service.GetAsync(status, priority, assignedToUserId, cancellationToken);
+        var items = await service.GetAsync(query, cancellationToken);
         return Ok(items);
     }
 

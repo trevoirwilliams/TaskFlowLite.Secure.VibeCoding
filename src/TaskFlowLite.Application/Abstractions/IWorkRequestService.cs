@@ -1,14 +1,11 @@
 using TaskFlowLite.Application.Models.WorkRequests;
-using TaskFlowLite.Domain.Enums;
 
 namespace TaskFlowLite.Application.Abstractions;
 
 public interface IWorkRequestService
 {
     Task<IReadOnlyList<WorkRequestDto>> GetAsync(
-        WorkRequestStatus? status,
-        Priority? priority,
-        int? assignedToUserId,
+        WorkRequestListQuery query,
         CancellationToken cancellationToken);
 
     Task<WorkRequestDto?> GetByIdAsync(int id, CancellationToken cancellationToken);
