@@ -10,7 +10,10 @@
         },
         "runtime": {
           "bin/placeholder/TaskFlowLite.Domain.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
