@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskFlowLite.Application.Abstractions;
 using TaskFlowLite.Application.Models.RequestNotes;
@@ -6,6 +7,7 @@ namespace TaskFlowLite.Api.Controllers;
 
 [ApiController]
 [Route("api/workrequests/{workRequestId:int}/notes")]
+[Authorize]
 public class RequestNotesController : ControllerBase
 {
     [HttpGet]

@@ -24,12 +24,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
             services.AddDbContext<TaskFlowLiteDbContext>(options =>
                 options.UseSqlite(connection));
-
-            var provider = services.BuildServiceProvider();
-            using var scope = provider.CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<TaskFlowLiteDbContext>();
-            dbContext.Database.EnsureCreated();
-            DbSeeder.SeedAsync(dbContext).GetAwaiter().GetResult();
         });
     }
 }

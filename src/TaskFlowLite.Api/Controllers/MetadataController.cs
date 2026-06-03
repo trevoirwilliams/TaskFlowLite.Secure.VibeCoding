@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskFlowLite.Domain.Enums;
 
@@ -5,6 +6,7 @@ namespace TaskFlowLite.Api.Controllers;
 
 [ApiController]
 [Route("api/metadata")]
+[AllowAnonymous]
 public class MetadataController : ControllerBase
 {
     [HttpGet("priorities")]

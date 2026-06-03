@@ -1,16 +1,36 @@
 @baseUrl = http://localhost:5199
-@userHeader = X-TaskFlow-UserId
+@token = REPLACE_WITH_JWT
 
-# Seeded users from DbSeeder:
-@user1 = 1
-@user2 = 2
+# Seeded users from DbSeeder (development):
+@seedEmail = alex.rivera@taskflow.local
+@seedPassword = TaskFlow!234
 @user3 = 3
-@invalidUser = not-a-number
 
 # Seeded work requests from DbSeeder:
 @request1 = 1
 @request2 = 2
 @missingRequest = 9999
+
+###
+# Register a new account
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "displayName": "Taylor Reese",
+  "email": "taylor.reese@taskflow.local",
+  "password": "StrongPass123"
+}
+
+###
+# Login and copy accessToken into @token
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{seedEmail}}",
+  "password": "{{seedPassword}}"
+}
 
 ###
 # Health check by metadata
@@ -22,87 +42,90 @@ GET {{baseUrl}}/api/metadata/statuses
 ###
 # Active users
 GET {{baseUrl}}/api/users
+Authorization: Bearer {{token}}
 
 ###
 # Work requests list (no filters)
 GET {{baseUrl}}/api/workrequests
+Authorization: Bearer {{token}}
 
 ###
 # Work requests list (example filters)
 GET {{baseUrl}}/api/workrequests?status=InProgress&priority=Medium&assignedToUserId={{user3}}
+Authorization: Bearer {{token}}
 
 ###
-# Work requests list (search by title as requester, expected: includes request1)
+# Work requests list (search by title)
 GET {{baseUrl}}/api/workrequests?search=password
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
-# Work requests list (search by description as assignee, expected: includes request2)
+# Work requests list (search by description)
 GET {{baseUrl}}/api/workrequests?search=oauth
-{{userHeader}}: {{user3}}
+Authorization: Bearer {{token}}
 
 ###
 # Work requests list (search + narrowing filters, expected: narrowed visible results only)
 GET {{baseUrl}}/api/workrequests?status=InProgress&assignedToUserId={{user3}}&search=oauth
-{{userHeader}}: {{user3}}
+Authorization: Bearer {{token}}
 
 ###
 # Work requests list (whitespace-only search, expected: same as no search)
 GET {{baseUrl}}/api/workrequests?search=Complete 
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
 # Work requests list (oversized search > 100 chars, expected: 400 validation problem)
 GET {{baseUrl}}/api/workrequests?search=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
-# Get request details as requester (expected: 200)
+# Get request details
 GET {{baseUrl}}/api/workrequests/{{request1}}
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
-# Get request details as assignee (expected: 200)
+# Get request details
 GET {{baseUrl}}/api/workrequests/{{request2}}
-{{userHeader}}: {{user3}}
+Authorization: Bearer {{token}}
 
 ###
-# Get request details as unrelated user (expected: safe 404)
+# Get request details
 GET {{baseUrl}}/api/workrequests/{{request2}}
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
 # Get missing request (expected: safe 404)
 GET {{baseUrl}}/api/workrequests/{{missingRequest}}
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
-# Get request details with missing current-user header (expected: safe 404)
+# Get request details without token (expected: 401)
 GET {{baseUrl}}/api/workrequests/{{request1}}
 
 ###
-# Get request details with invalid current-user header (expected: safe 404)
+# Get request details with invalid token (expected: 401)
 GET {{baseUrl}}/api/workrequests/{{request1}}
-{{userHeader}}: {{invalidUser}}
+Authorization: Bearer invalid-token
 
 ###
-# Create work request as user2 (expected: 201)
+# Create work request
 POST {{baseUrl}}/api/workrequests
 Content-Type: application/json
-{{userHeader}}: {{user2}}
+Authorization: Bearer {{token}}
 
 {
   "title": "Investigate failed nightly sync",
   "description": "Review logs and identify the root cause for nightly sync failures.",
   "priority": "High",
-  "assignedToUserId": {{user3}}
+  "assignedToUserId": 3
 }
 
 ###
 # Update work request details (expected: 200 if request exists)
 PUT {{baseUrl}}/api/workrequests/{{request1}}
 Content-Type: application/json
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 {
   "title": "Rotate internal API keys - follow up",
@@ -114,17 +137,17 @@ Content-Type: application/json
 # Assign work request (expected: 200 if request exists)
 PATCH {{baseUrl}}/api/workrequests/{{request1}}/assign
 Content-Type: application/json
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 {
-  "assignedToUserId": {{user2}}
+  "assignedToUserId": 2
 }
 
 ###
 # Update status (expected: 200 or validation error for invalid transition)
 PATCH {{baseUrl}}/api/workrequests/{{request1}}/status
 Content-Type: application/json
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 {
   "status": "InProgress"
@@ -133,13 +156,13 @@ Content-Type: application/json
 ###
 # Get request notes
 GET {{baseUrl}}/api/workrequests/{{request1}}/notes
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 ###
 # Add request note
 POST {{baseUrl}}/api/workrequests/{{request1}}/notes
 Content-Type: application/json
-{{userHeader}}: {{user1}}
+Authorization: Bearer {{token}}
 
 {
   "body": "Security checkpoint review completed; proceeding with remediation verification."

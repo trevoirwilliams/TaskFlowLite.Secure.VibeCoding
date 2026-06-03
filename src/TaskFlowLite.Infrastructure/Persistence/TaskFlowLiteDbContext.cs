@@ -1,22 +1,44 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TaskFlowLite.Domain.Entities;
+using TaskFlowLite.Infrastructure.Identity;
 
 namespace TaskFlowLite.Infrastructure.Persistence;
 
-public class TaskFlowLiteDbContext : DbContext
+public class TaskFlowLiteDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
 {
     public TaskFlowLiteDbContext(DbContextOptions<TaskFlowLiteDbContext> options)
         : base(options)
     {
     }
 
-    public DbSet<User> Users => Set<User>();
+    public new DbSet<User> Users => Set<User>();
     public DbSet<WorkRequest> WorkRequests => Set<WorkRequest>();
     public DbSet<RequestNote> RequestNotes => Set<RequestNote>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ApplicationUser>(entity =>
+        {
+            entity.ToTable("AppUsers");
+            entity.Property(x => x.DomainUserId).IsRequired();
+            entity.HasIndex(x => x.DomainUserId).IsUnique();
+
+            entity.HasOne<User>()
+                .WithOne()
+                .HasForeignKey<ApplicationUser>(x => x.DomainUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<IdentityRole<int>>().ToTable("AppRoles");
+        modelBuilder.Entity<IdentityUserClaim<int>>().ToTable("AppUserClaims");
+        modelBuilder.Entity<IdentityUserLogin<int>>().ToTable("AppUserLogins");
+        modelBuilder.Entity<IdentityUserToken<int>>().ToTable("AppUserTokens");
+        modelBuilder.Entity<IdentityRoleClaim<int>>().ToTable("AppRoleClaims");
+        modelBuilder.Entity<IdentityUserRole<int>>().ToTable("AppUserRoles");
 
         modelBuilder.Entity<User>(entity =>
         {
