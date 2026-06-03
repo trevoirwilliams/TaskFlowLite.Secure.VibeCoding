@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using TaskFlowLite.Application.Abstractions;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace TaskFlowLite.Infrastructure.Services;
 
@@ -18,16 +19,10 @@ public class CurrentUserContext : ICurrentUserContext
         userId = default;
         var httpContext = _httpContextAccessor.HttpContext;
 
-        var claimValue = httpContext?.User.FindFirstValue(TaskFlowClaimTypes.UserId)
-            ?? httpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var claimValue = httpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            ?? httpContext?.User.FindFirstValue(JwtRegisteredClaimNames.Sub);
 
-        if (int.TryParse(claimValue, out userId) && userId > 0)
-        {
-            return true;
-        }
-
-        var headerValue = httpContext?.Request.Headers["X-TaskFlow-UserId"].FirstOrDefault();
-        return int.TryParse(headerValue, out userId) && userId > 0;
+        return int.TryParse(claimValue, out userId) && userId > 0;
     }
 
     public int UserId

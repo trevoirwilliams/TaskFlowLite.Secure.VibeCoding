@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
-using TaskFlowLite.Infrastructure.Identity;
+using TaskFlowLite.Domain.Entities;
 using TaskFlowLite.Infrastructure.Extensions;
 using TaskFlowLite.Infrastructure.Persistence;
 

@@ -1713,7 +1713,10 @@
         },
         "runtime": {
           "bin/placeholder/TaskFlowLite.Domain.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "TaskFlowLite.Infrastructure/1.0.0": {
         "type": "project",

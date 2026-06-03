@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskFlowLite.Domain.Entities;
 using TaskFlowLite.Domain.Enums;
-using TaskFlowLite.Infrastructure.Identity;
 
 namespace TaskFlowLite.Infrastructure.Persistence;
 
@@ -14,14 +13,92 @@ public static class DbSeeder
         string seedPassword = "TaskFlow!234",
         CancellationToken cancellationToken = default)
     {
-        if (!await dbContext.Users.AnyAsync(cancellationToken))
+        if (userManager is null)
         {
-            var users = new List<User>
+            throw new InvalidOperationException("UserManager<ApplicationUser> is required for seeding.");
+        }
+
+        var now = DateTime.UtcNow;
+        var sampleUsers = new[]
+        {
+            new ApplicationUser
             {
-                new() { Id = 1, DisplayName = "Alex Rivera", Email = "alex.rivera@taskflow.local", IsActive = true },
-                new() { Id = 2, DisplayName = "Jamie Chen", Email = "jamie.chen@taskflow.local", IsActive = true },
-                new() { Id = 3, DisplayName = "Samir Patel", Email = "samir.patel@taskflow.local", IsActive = true }
-            };
+                Id = 1,
+                UserName = "alex.rivera@taskflow.local",
+                Email = "alex.rivera@taskflow.local",
+                EmailConfirmed = true,
+                DisplayName = "Alex Rivera",
+                IsActive = true,
+                CreatedAtUtc = now
+            },
+            new ApplicationUser
+            {
+                Id = 2,
+                UserName = "jamie.chen@taskflow.local",
+                Email = "jamie.chen@taskflow.local",
+                EmailConfirmed = true,
+                DisplayName = "Jamie Chen",
+                IsActive = true,
+                CreatedAtUtc = now
+            },
+            new ApplicationUser
+            {
+                Id = 3,
+                UserName = "samir.patel@taskflow.local",
+                Email = "samir.patel@taskflow.local",
+                EmailConfirmed = true,
+                DisplayName = "Samir Patel",
+                IsActive = true,
+                CreatedAtUtc = now
+            }
+        };
+
+        foreach (var sampleUser in sampleUsers)
+        {
+            var existingIdentity = await userManager.Users
+                .FirstOrDefaultAsync(x => x.Id == sampleUser.Id || x.Email == sampleUser.Email, cancellationToken);
+
+            if (existingIdentity is not null)
+            {
+                var shouldUpdate = existingIdentity.DisplayName != sampleUser.DisplayName
+                    || existingIdentity.IsActive != sampleUser.IsActive
+                    || existingIdentity.CreatedAtUtc != sampleUser.CreatedAtUtc;
+
+                if (shouldUpdate)
+                {
+                    existingIdentity.DisplayName = sampleUser.DisplayName;
+                    existingIdentity.IsActive = sampleUser.IsActive;
+                    existingIdentity.CreatedAtUtc = sampleUser.CreatedAtUtc;
+                    await userManager.UpdateAsync(existingIdentity);
+                }
+
+                continue;
+            }
+
+            var result = await userManager.CreateAsync(sampleUser, seedPassword);
+            if (!result.Succeeded)
+            {
+                var errors = string.Join("; ", result.Errors.Select(x => x.Description));
+                throw new InvalidOperationException($"Failed to seed identity user '{sampleUser.Email}': {errors}");
+            }
+        }
+
+        if (!await dbContext.WorkRequests.AnyAsync(cancellationToken))
+        {
+            var alexId = await userManager.Users
+                .Where(x => x.Email == "alex.rivera@taskflow.local")
+                .Select(x => x.Id)
+                .SingleAsync(cancellationToken);
+
+            var jamieId = await userManager.Users
+                .Where(x => x.Email == "jamie.chen@taskflow.local")
+                .Select(x => x.Id)
+                .SingleAsync(cancellationToken);
+
+            var samirId = await userManager.Users
+                .Where(x => x.Email == "samir.patel@taskflow.local")
+                .Select(x => x.Id)
+                .SingleAsync(cancellationToken);
 
             var requestOne = new WorkRequest
             {
@@ -29,8 +106,8 @@ public static class DbSeeder
                 Title = "Rotate internal API keys",
                 Description = "Complete scheduled key rotation for internal integrations.",
                 Priority = Priority.High,
-                RequestedByUserId = 1,
-                CreatedAtUtc = DateTime.UtcNow.AddDays(-2)
+                RequestedByUserId = alexId,
+                CreatedAtUtc = now.AddDays(-2)
             };
 
             var requestTwo = new WorkRequest
@@ -39,14 +116,12 @@ public static class DbSeeder
                 Title = "Refresh onboarding checklist",
                 Description = "Update checklist based on the latest security baseline.",
                 Priority = Priority.Medium,
-                RequestedByUserId = 2,
-                CreatedAtUtc = DateTime.UtcNow.AddDays(-1)
+                RequestedByUserId = jamieId,
+                CreatedAtUtc = now.AddDays(-1)
             };
 
-            requestTwo.AssignTo(3);
+            requestTwo.AssignTo(samirId);
             requestTwo.ChangeStatus(WorkRequestStatus.InProgress);
-
-            var workRequests = new List<WorkRequest> { requestOne, requestTwo };
 
             var notes = new List<RequestNote>
             {
@@ -54,61 +129,23 @@ public static class DbSeeder
                 {
                     Id = 1,
                     WorkRequestId = 1,
-                    AuthorUserId = 1,
+                    AuthorUserId = alexId,
                     Body = "Coordinate with ops before key cutover.",
-                    CreatedAtUtc = DateTime.UtcNow.AddDays(-2)
+                    CreatedAtUtc = now.AddDays(-2)
                 },
                 new()
                 {
                     Id = 2,
                     WorkRequestId = 2,
-                    AuthorUserId = 3,
+                    AuthorUserId = samirId,
                     Body = "Draft complete, pending review.",
-                    CreatedAtUtc = DateTime.UtcNow.AddHours(-6)
+                    CreatedAtUtc = now.AddHours(-6)
                 }
             };
 
-            await dbContext.Users.AddRangeAsync(users, cancellationToken);
-            await dbContext.WorkRequests.AddRangeAsync(workRequests, cancellationToken);
+            await dbContext.WorkRequests.AddRangeAsync([requestOne, requestTwo], cancellationToken);
             await dbContext.RequestNotes.AddRangeAsync(notes, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);
-        }
-
-        if (userManager is null)
-        {
-            return;
-        }
-
-        var activeUsers = await dbContext.Users
-            .AsNoTracking()
-            .Where(x => x.IsActive)
-            .ToListAsync(cancellationToken);
-
-        foreach (var domainUser in activeUsers)
-        {
-            var existingIdentity = await userManager.Users
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.DomainUserId == domainUser.Id, cancellationToken);
-
-            if (existingIdentity is not null)
-            {
-                continue;
-            }
-
-            var identityUser = new ApplicationUser
-            {
-                UserName = domainUser.Email,
-                Email = domainUser.Email,
-                EmailConfirmed = true,
-                DomainUserId = domainUser.Id
-            };
-
-            var result = await userManager.CreateAsync(identityUser, seedPassword);
-            if (!result.Succeeded)
-            {
-                var errors = string.Join("; ", result.Errors.Select(x => x.Description));
-                throw new InvalidOperationException($"Failed to seed identity user for domain user {domainUser.Id}: {errors}");
-            }
         }
     }
 }

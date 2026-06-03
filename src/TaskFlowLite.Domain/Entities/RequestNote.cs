@@ -9,5 +9,5 @@ public class RequestNote
     public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
 
     public WorkRequest WorkRequest { get; set; } = null!;
-    public User AuthorUser { get; set; } = null!;
+    public ApplicationUser AuthorUser { get; set; } = null!;
 }

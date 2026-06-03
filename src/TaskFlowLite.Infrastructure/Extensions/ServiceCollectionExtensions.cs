@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using TaskFlowLite.Application.Abstractions;
+using TaskFlowLite.Domain.Entities;
 using TaskFlowLite.Infrastructure.Authentication;
-using TaskFlowLite.Infrastructure.Identity;
 using TaskFlowLite.Infrastructure.Persistence;
 using TaskFlowLite.Infrastructure.Services;
 

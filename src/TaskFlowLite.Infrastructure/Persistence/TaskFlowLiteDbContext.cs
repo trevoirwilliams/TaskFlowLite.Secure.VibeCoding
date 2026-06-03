@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TaskFlowLite.Domain.Entities;
-using TaskFlowLite.Infrastructure.Identity;
 
 namespace TaskFlowLite.Infrastructure.Persistence;
 
@@ -13,7 +12,6 @@ public class TaskFlowLiteDbContext : IdentityDbContext<ApplicationUser, Identity
     {
     }
 
-    public new DbSet<User> Users => Set<User>();
     public DbSet<WorkRequest> WorkRequests => Set<WorkRequest>();
     public DbSet<RequestNote> RequestNotes => Set<RequestNote>();
 
@@ -24,13 +22,9 @@ public class TaskFlowLiteDbContext : IdentityDbContext<ApplicationUser, Identity
         modelBuilder.Entity<ApplicationUser>(entity =>
         {
             entity.ToTable("AppUsers");
-            entity.Property(x => x.DomainUserId).IsRequired();
-            entity.HasIndex(x => x.DomainUserId).IsUnique();
-
-            entity.HasOne<User>()
-                .WithOne()
-                .HasForeignKey<ApplicationUser>(x => x.DomainUserId)
-                .OnDelete(DeleteBehavior.Cascade);
+            entity.Property(x => x.DisplayName).HasMaxLength(120).IsRequired();
+            entity.Property(x => x.IsActive).IsRequired();
+            entity.Property(x => x.CreatedAtUtc).IsRequired();
         });
 
         modelBuilder.Entity<IdentityRole<int>>().ToTable("AppRoles");
@@ -39,14 +33,6 @@ public class TaskFlowLiteDbContext : IdentityDbContext<ApplicationUser, Identity
         modelBuilder.Entity<IdentityUserToken<int>>().ToTable("AppUserTokens");
         modelBuilder.Entity<IdentityRoleClaim<int>>().ToTable("AppRoleClaims");
         modelBuilder.Entity<IdentityUserRole<int>>().ToTable("AppUserRoles");
-
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.HasKey(x => x.Id);
-            entity.Property(x => x.DisplayName).HasMaxLength(120).IsRequired();
-            entity.Property(x => x.Email).HasMaxLength(256).IsRequired();
-            entity.HasIndex(x => x.Email).IsUnique();
-        });
 
         modelBuilder.Entity<WorkRequest>(entity =>
         {
@@ -59,12 +45,12 @@ public class TaskFlowLiteDbContext : IdentityDbContext<ApplicationUser, Identity
             entity.HasIndex(x => x.CreatedAtUtc);
 
             entity.HasOne(x => x.RequestedByUser)
-                .WithMany(u => u.RequestedWorkRequests)
+                .WithMany()
                 .HasForeignKey(x => x.RequestedByUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             entity.HasOne(x => x.AssignedToUser)
-                .WithMany(u => u.AssignedWorkRequests)
+                .WithMany()
                 .HasForeignKey(x => x.AssignedToUserId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
@@ -81,7 +67,7 @@ public class TaskFlowLiteDbContext : IdentityDbContext<ApplicationUser, Identity
                 .OnDelete(DeleteBehavior.Cascade);
 
             entity.HasOne(x => x.AuthorUser)
-                .WithMany(u => u.RequestNotes)
+                .WithMany()
                 .HasForeignKey(x => x.AuthorUserId)
                 .OnDelete(DeleteBehavior.Restrict);
         });

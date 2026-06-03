@@ -18,19 +18,18 @@ public class JwtTokenService : ITokenService
         _options = options.Value;
     }
 
-    public AuthResponse CreateAccessToken(int identityUserId, int domainUserId, string email, string displayName)
+    public AuthResponse CreateAccessToken(int userId, string email, string displayName)
     {
         var now = DateTime.UtcNow;
         var expiresAtUtc = now.AddMinutes(_options.AccessTokenMinutes);
 
         var claims = new List<Claim>
         {
-            new(JwtRegisteredClaimNames.Sub, identityUserId.ToString()),
+            new(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new(JwtRegisteredClaimNames.Email, email),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-            new(ClaimTypes.NameIdentifier, domainUserId.ToString()),
-            new(ClaimTypes.Name, displayName),
-            new(TaskFlowClaimTypes.UserId, domainUserId.ToString())
+            new(ClaimTypes.NameIdentifier, userId.ToString()),
+            new(ClaimTypes.Name, displayName)
         };
 
         var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SigningKey));
@@ -48,7 +47,7 @@ public class JwtTokenService : ITokenService
             AccessToken: new JwtSecurityTokenHandler().WriteToken(token),
             TokenType: "Bearer",
             ExpiresAtUtc: expiresAtUtc,
-            UserId: domainUserId,
+            UserId: userId,
             Email: email,
             DisplayName: displayName);
     }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskFlowLite.Infrastructure.Persistence;
 
@@ -10,9 +11,11 @@ using TaskFlowLite.Infrastructure.Persistence;
 namespace TaskFlowLite.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(TaskFlowLiteDbContext))]
-    partial class TaskFlowLiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260603184827_IdentityOnlyUserCleanup")]
+    partial class IdentityOnlyUserCleanup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.0");

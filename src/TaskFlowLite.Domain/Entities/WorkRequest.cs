@@ -15,8 +15,8 @@ public class WorkRequest
     public DateTime UpdatedAtUtc { get; private set; } = DateTime.UtcNow;
     public DateTime? ClosedAtUtc { get; private set; }
 
-    public User RequestedByUser { get; set; } = null!;
-    public User? AssignedToUser { get; private set; }
+    public ApplicationUser RequestedByUser { get; set; } = null!;
+    public ApplicationUser? AssignedToUser { get; private set; }
     public ICollection<RequestNote> Notes { get; set; } = new List<RequestNote>();
 
     public void UpdateDetails(string title, string description, Priority priority)
