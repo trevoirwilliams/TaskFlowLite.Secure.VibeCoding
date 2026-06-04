@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("28935b21-bd47-40c8-91f6-095057f43de0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskFlowLite.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+beccf7ba4f6e8b098c797af7ab8218963e5b9bf2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a32a73cc8a58084fa2d524665c075f5f5fc1e292")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskFlowLite.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskFlowLite.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

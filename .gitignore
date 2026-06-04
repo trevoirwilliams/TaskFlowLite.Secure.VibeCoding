@@ -10,6 +10,13 @@
 *.userosscache
 *.sln.docstates
 *.env
+.env.*
+
+# Local-only configuration overrides (secrets should never be committed)
+appsettings.Local.json
+appsettings.*.Local.json
+**/appsettings.Local.json
+**/appsettings.*.Local.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -119,6 +126,8 @@ StyleCopReport.xml
 *.tmp_proj
 *_wpftmp.csproj
 *.log
+logs/
+**/logs/
 *.tlog
 *.vspscc
 *.vssscc

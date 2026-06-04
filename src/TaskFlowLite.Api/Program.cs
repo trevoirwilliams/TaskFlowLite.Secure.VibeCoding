@@ -34,8 +34,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using (var scope = app.Services.CreateScope())
+if (app.Environment.IsDevelopment())
 {
+    using var scope = app.Services.CreateScope();
+
     var dbContext = scope.ServiceProvider.GetRequiredService<TaskFlowLiteDbContext>();
     var hasMigrations = dbContext.Database.GetMigrations().Any();
     if (hasMigrations)
@@ -47,12 +49,9 @@ using (var scope = app.Services.CreateScope())
         await dbContext.Database.EnsureCreatedAsync();
     }
 
-    if (app.Environment.IsDevelopment())
-    {
-        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        var seedPassword = builder.Configuration["DevSeed:Password"] ?? "TaskFlow!234";
-        await DbSeeder.SeedAsync(dbContext, userManager, seedPassword);
-    }
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var seedPassword = builder.Configuration["DevSeed:Password"] ?? "TaskFlow!234";
+    await DbSeeder.SeedAsync(dbContext, userManager, seedPassword);
 }
 
 app.UseHttpsRedirection();
