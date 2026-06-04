@@ -893,11 +893,11 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.14.1, )"
+              "version": "[18.6.0, )"
             },
             "coverlet.collector": {
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[10.0.1, )"
             },
             "xunit": {
               "target": "Package",
@@ -905,7 +905,7 @@
             },
             "xunit.runner.visualstudio": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.5, )"
             }
           },
           "imports": [

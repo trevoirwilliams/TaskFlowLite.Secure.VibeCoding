@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskFlowLite.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a32a73cc8a58084fa2d524665c075f5f5fc1e292")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bd0e660f04e9375b2d6c20b593bec31251bc7c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskFlowLite.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskFlowLite.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
