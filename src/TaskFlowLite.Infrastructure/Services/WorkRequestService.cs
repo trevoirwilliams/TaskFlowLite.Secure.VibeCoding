@@ -96,7 +96,15 @@ public class WorkRequestService : IWorkRequestService
 
     public async Task<WorkRequestDto?> UpdateAsync(int id, UpdateWorkRequestRequest request, CancellationToken cancellationToken)
     {
-        var entity = await _dbContext.WorkRequests.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        if (!_currentUserContext.TryGetUserId(out var currentUserId))
+        {
+            return null;
+        }
+
+        var entity = await _dbContext.WorkRequests.FirstOrDefaultAsync(
+            x => x.Id == id && (x.RequestedByUserId == currentUserId || x.AssignedToUserId == currentUserId),
+            cancellationToken);
+
         if (entity is null)
         {
             return null;

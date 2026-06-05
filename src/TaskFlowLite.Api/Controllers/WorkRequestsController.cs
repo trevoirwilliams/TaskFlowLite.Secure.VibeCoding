@@ -52,6 +52,7 @@ public class WorkRequestsController : ControllerBase
     }
 
     [HttpPatch("{id:int}/assign")]
+    [Authorize(Roles = "Manager")]
     public async Task<IActionResult> Assign(
         int id,
         [FromServices] IWorkRequestService service,
@@ -63,6 +64,7 @@ public class WorkRequestsController : ControllerBase
     }
 
     [HttpPatch("{id:int}/status")]
+    [Authorize(Roles = "Manager,Worker")]
     public async Task<IActionResult> UpdateStatus(
         int id,
         [FromServices] IWorkRequestService service,
