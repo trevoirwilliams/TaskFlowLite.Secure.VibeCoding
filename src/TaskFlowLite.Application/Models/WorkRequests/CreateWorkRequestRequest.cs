@@ -4,7 +4,7 @@ using TaskFlowLite.Domain.Enums;
 namespace TaskFlowLite.Application.Models.WorkRequests;
 
 public sealed record CreateWorkRequestRequest(
-    [property: Required, StringLength(120)] string Title,
-    [property: Required, StringLength(2000)] string Description,
+    [param: Required, StringLength(120)] string Title,
+    [param: Required, StringLength(2000)] string Description,
     Priority Priority,
     int? AssignedToUserId);
