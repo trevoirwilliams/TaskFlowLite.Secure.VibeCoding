@@ -49,7 +49,7 @@ public class WorkRequestsSecurityTests : IClassFixture<CustomWebApplicationFacto
                 {
                   "title": "UNAUTHORIZED TITLE CHANGE",
                   "description": "UNAUTHORIZED DESCRIPTION CHANGE",
-                                    "priority": 0
+                  "priority": "Low"
                 }
                 """,
                 Encoding.UTF8,
@@ -61,7 +61,7 @@ public class WorkRequestsSecurityTests : IClassFixture<CustomWebApplicationFacto
         var afterUpdate = await GetWorkRequestByIdAsync(ownerToken, 1);
         Assert.Equal(baseline.GetProperty("title").GetString(), afterUpdate.GetProperty("title").GetString());
         Assert.Equal(baseline.GetProperty("description").GetString(), afterUpdate.GetProperty("description").GetString());
-        Assert.Equal(baseline.GetProperty("priority").GetRawText(), afterUpdate.GetProperty("priority").GetRawText());
+        Assert.Equal(baseline.GetProperty("priority").GetString(), afterUpdate.GetProperty("priority").GetString());
     }
 
     [Fact]
@@ -78,7 +78,7 @@ public class WorkRequestsSecurityTests : IClassFixture<CustomWebApplicationFacto
                 {
                   "title": "Security test request",
                   "description": "Validate requester identity source.",
-                                    "priority": 2,
+                  "priority": "High",
                   "assignedToUserId": 1
                 }
                 """,
