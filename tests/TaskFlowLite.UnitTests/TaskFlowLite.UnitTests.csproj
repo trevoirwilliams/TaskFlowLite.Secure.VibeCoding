@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\TaskFlowLite.Application\TaskFlowLite.Application.csproj" />
     <ProjectReference Include="..\..\src\TaskFlowLite.Domain\TaskFlowLite.Domain.csproj" />
+    <ProjectReference Include="..\..\src\TaskFlowLite.Infrastructure\TaskFlowLite.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
