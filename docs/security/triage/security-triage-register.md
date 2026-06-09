@@ -44,6 +44,6 @@ The branch cannot be marked production-ready while any `Fix Now` item remains op
 
 Current merge gate result:
 
-```text
+~~~text
 Changes required.
-````
+~~~
