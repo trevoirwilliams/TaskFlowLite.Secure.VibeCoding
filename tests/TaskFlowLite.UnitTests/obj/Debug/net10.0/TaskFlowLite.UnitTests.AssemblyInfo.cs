@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskFlowLite.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79bdb57afdc1d20e34d639364a72787edae03f4c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97c51995b9f8fc882276595a19670cbc57efc68a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskFlowLite.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskFlowLite.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
