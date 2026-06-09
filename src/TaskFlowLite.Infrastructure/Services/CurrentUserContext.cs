@@ -25,6 +25,16 @@ public class CurrentUserContext : ICurrentUserContext
         return int.TryParse(claimValue, out userId) && userId > 0;
     }
 
+    public bool IsInRole(string role)
+    {
+        if (string.IsNullOrWhiteSpace(role))
+        {
+            return false;
+        }
+
+        return _httpContextAccessor.HttpContext?.User.IsInRole(role) ?? false;
+    }
+
     public int UserId
     {
         get

@@ -132,7 +132,26 @@ public class WorkRequestService : IWorkRequestService
 
     public async Task<WorkRequestDto?> UpdateStatusAsync(int id, UpdateWorkRequestStatusRequest request, CancellationToken cancellationToken)
     {
-        var entity = await _dbContext.WorkRequests.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        if (!_currentUserContext.TryGetUserId(out var currentUserId))
+        {
+            return null;
+        }
+
+        var canManageAnyRequest = _currentUserContext.IsInRole("Manager");
+        var canUpdateAssignedRequests = _currentUserContext.IsInRole("Worker");
+
+        if (!canManageAnyRequest && !canUpdateAssignedRequests)
+        {
+            return null;
+        }
+
+        IQueryable<WorkRequest> statusScope = _dbContext.WorkRequests.Where(x => x.Id == id);
+        if (!canManageAnyRequest)
+        {
+            statusScope = statusScope.Where(x => x.AssignedToUserId == currentUserId);
+        }
+
+        var entity = await statusScope.FirstOrDefaultAsync(cancellationToken);
         if (entity is null)
         {
             return null;
@@ -141,7 +160,17 @@ public class WorkRequestService : IWorkRequestService
         entity.ChangeStatus(request.Status);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        return await GetByIdAsync(id, cancellationToken);
+        return new WorkRequestDto(
+            entity.Id,
+            entity.Title,
+            entity.Description,
+            entity.Priority,
+            entity.Status,
+            entity.RequestedByUserId,
+            entity.AssignedToUserId,
+            entity.CreatedAtUtc,
+            entity.UpdatedAtUtc,
+            entity.ClosedAtUtc);
     }
 
     private static Expression<Func<WorkRequest, WorkRequestDto>> ToDto()

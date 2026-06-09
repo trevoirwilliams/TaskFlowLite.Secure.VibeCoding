@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskFlowLite.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a32a73cc8a58084fa2d524665c075f5f5fc1e292")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97c51995b9f8fc882276595a19670cbc57efc68a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskFlowLite.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskFlowLite.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
